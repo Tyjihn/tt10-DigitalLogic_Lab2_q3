@@ -55,7 +55,7 @@ async def test_project(dut):
             dut._log.info(f"Test case ui_in={a_vals[i]}, uio_in={b_vals[j]} -> uo_out={dut.uo_out.value}")
 
             # Expected output logic (assuming sum modulo 256, replace as per DUT logic)
-            expected_uo_out = (a_vals[i] & b_vals[j]) % 256
+            expected_uo_out = (a_vals[i] - b_vals[j]) % 256
 
             # Assert the output matches the expected value
             assert int(dut.uo_out.value) == expected_uo_out, (
